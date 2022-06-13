@@ -17,24 +17,28 @@ public class LookX : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetMouseButton(1))
         {
-            DoneSee();
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                DoneSee();
+            }
+            if (move == false)
+            {
+                float mousex = Input.GetAxis("Mouse X");
+                Vector3 newrotation = transform.localEulerAngles;
+                newrotation.y = newrotation.y + (mousex * _sensitivity);
+                transform.localEulerAngles = newrotation;
+            }
         }
-        if (move == false)
-        {
-            float mousex = Input.GetAxis("Mouse X");
-            Vector3 newrotation = transform.localEulerAngles;
-            newrotation.y = newrotation.y + (mousex * _sensitivity);
-            transform.localEulerAngles = newrotation;
-        }
+        
     }
     public void DoneSee()
     {
-        move = false;
+        move = true;
     }
     public void YesSee()
     {
-        move = true;
+        move = false;
     }
 }

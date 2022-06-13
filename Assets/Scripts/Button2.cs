@@ -18,10 +18,14 @@ public class Button2 : MonoBehaviour
     {
         
     }
-    public void Action()
+    public void Action(GameObject go)
     {
-        ball2.transform.Translate(Vector3.forward * 3f * Time.deltaTime);
-        rg = ball2.GetComponent<Rigidbody>();
+        go.transform.Translate(Vector3.forward * 3f * Time.deltaTime);
+        rg = go.GetComponent<Rigidbody>();
         rg.AddForce(Vector3.forward * 1000);
+        rg.useGravity = true;
+        //ball2.transform.Translate(Vector3.forward * 3f * Time.deltaTime);
+        //rg = ball2.GetComponent<Rigidbody>();
+        //rg.AddForce(Vector3.forward * 1000);
     }
 }

@@ -22,10 +22,14 @@ public class Button1 : MonoBehaviour
     {
         transform.Translate(Vector3.down);
     }
-    public void Action()
+    public void Action(GameObject go)
     {
-        ball1.transform.Translate(Vector3.forward * 3f * Time.deltaTime);
-        rg = ball1.GetComponent<Rigidbody>();
-        rg.AddForce(Vector3.forward * 1000);
+        go.transform.Translate(Vector3.forward * 5f * Time.deltaTime);
+        rg = go.GetComponent<Rigidbody>();
+        rg.AddForce(Vector3.up * 500);
+        rg.useGravity = true;
+        //ball1.transform.Translate(Vector3.forward * 3f * Time.deltaTime);
+        //rg = ball1.GetComponent<Rigidbody>();
+        //rg.AddForce(Vector3.forward * 1000);
     }
 }

@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private Button3 b3;
     private Button2 b2;
     private Button1 b1;
+    private SpawnManager _sm;
 
     public void YesMove()
     {
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         cc = GetComponent<CharacterController>();
+        _sm = GetComponent<SpawnManager>();
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
         b3 = GameObject.Find("Button3").GetComponent<Button3>();
@@ -68,23 +70,26 @@ public class Player : MonoBehaviour
                     Vector3 v = new Vector3(button1.transform.position.x, button1.transform.position.y - 0.05f, button1.transform.position.z);
                     button1.transform.position = v;
                     isCLicked = true;
-                    b1.Action();
+                    _sm.InstantiateB1();
+                    // b1.Action();
                     StartCoroutine(ButtonRaise1(v));
                 }
                 else if (hit.transform.tag == "Button2")
                 {
-                    Vector3 v = new Vector3(button2.transform.position.x, button2.transform.position.y - 1f, button2.transform.position.z);
+                    Vector3 v = new Vector3(button2.transform.position.x, button2.transform.position.y - 0.05f, button2.transform.position.z);
                     button2.transform.position = v;
                     isCLicked = true;
-                    b2.Action();
+                    _sm.InstantiateB2();
+                    // b2.Action();
                     StartCoroutine(ButtonRaise2(v));
                 }
                 else if (hit.transform.tag == "Button3")
                 {
-                    Vector3 v = new Vector3(button3.transform.position.x, button3.transform.position.y - 1f, button3.transform.position.z);
+                    Vector3 v = new Vector3(button3.transform.position.x, button3.transform.position.y - 0.05f, button3.transform.position.z);
                     button3.transform.position = v;
                     isCLicked = true;
-                    b3.Action();
+                    _sm.InstantiateB3();
+                    // b3.Action();
                     StartCoroutine(ButtonRaise3(v));
                 }
 
